@@ -7,15 +7,12 @@
 
 <meta charset="UTF-8">
 
-<title>Home Page</title>
+<title>Admin Page</title>
 
 </head>
 
 <body>
-<h1>Trang chủ</h1>
-<h1>Menu</h1>
-
-<%-- <%@ include file="menu.jsp" %> --%>
+<h1>Admin</h1>
 </body>
 
 </html>
