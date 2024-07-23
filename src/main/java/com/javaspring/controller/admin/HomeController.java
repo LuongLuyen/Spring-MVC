@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.javaspring.model.UserModel;
+import com.javaspring.dto.UserDTO;
 import com.javaspring.service.IUserService;
 
 @Controller(value = "homeControllerOfAdmin")
 public class HomeController {
 
 	@Autowired
-	private IUserService newService;
+	private IUserService userService;
 
 	@RequestMapping(value = "/quan-tri", method = RequestMethod.GET)
-	public ModelAndView homePage(@ModelAttribute("model") UserModel model) {
+	public ModelAndView homePage(@ModelAttribute("model") UserDTO model) {
 		ModelAndView mav = new ModelAndView("admin/home");
-		model.setListResult(newService.findAll());
+		model.setListResult(userService.findAll());
 		mav.addObject("model", model);
 		return mav;
 	}

@@ -1,11 +1,12 @@
-package com.javaspring.model;
+package com.javaspring.dto;
 
-public class UserModel extends AbstractModel<UserModel> {
+
+public class UserDTO extends AbstractDTO<UserDTO> {
 	
 	private String userName;
 	private String password;
 	private String fullName;
-	public UserModel() {
+	public UserDTO() {
 		super();
 	}
 	public String getUserName() {

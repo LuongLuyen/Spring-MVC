@@ -20,12 +20,9 @@ public class UserEntity {
 	@Column(name = "fullname", columnDefinition = "TEXT")
 	private String fullName;
 
-	public UserEntity(Long id, String userName, String password, String fullName) {
+	public UserEntity() {
 		super();
-		this.id = id;
-		this.userName = userName;
-		this.password = password;
-		this.fullName = fullName;
+
 	}
 
 	public Long getId() {

@@ -2,8 +2,10 @@ package com.javaspring.service;
 
 import java.util.List;
 
-import com.javaspring.model.UserModel;
+import com.javaspring.dto.UserDTO;
 
 public interface IUserService {
-	List<UserModel> findAll();
+	List<UserDTO> findAll();
+	UserDTO save(UserDTO dto);
+	void delete(long[] ids);
 }
