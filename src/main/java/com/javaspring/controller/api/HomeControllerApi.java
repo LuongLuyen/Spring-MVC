@@ -18,6 +18,11 @@ public class HomeControllerApi {
 	@Autowired
 	private IUserService userService;
 	
+	@PostMapping("/api/login")
+	public UserDTO login(@RequestBody UserDTO createUser) {
+		return userService.save(createUser);
+	}
+	
 	@GetMapping("/api/user")
 	public List<UserDTO> allUser() {
 		return userService.findAll();

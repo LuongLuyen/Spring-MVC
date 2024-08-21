@@ -48,17 +48,26 @@ public class JPAConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/test");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/btl");
 		dataSource.setUsername("root");
 		dataSource.setPassword("luyen123");
 		return dataSource;
 	}
+//	public DataSource dataSource() {
+//	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//	    dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+//	    dataSource.setUrl(System.getenv("DB_URL"));
+//	    dataSource.setUsername(System.getenv("DB_USER"));
+//	    dataSource.setPassword(System.getenv("DB_PASSWORD"));
+//	    return dataSource;
+//	}
+
 	
 	Properties additionalProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-//		properties.setProperty("hibernate.hbm2ddl.auto", "none");
-//		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+//		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop"); // dev
+//		properties.setProperty("hibernate.hbm2ddl.auto", "none"); // docker
+		properties.setProperty("hibernate.hbm2ddl.auto", "update"); 
 		return properties;
 	}
 }

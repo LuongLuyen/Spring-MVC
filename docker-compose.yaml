@@ -1,0 +1,32 @@
+services:
+  database-mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=btl
+      - MYSQL_ROOT_PASSWORD=luyen123
+    ports:
+      - '3307:3306'
+    volumes:
+      - ./insert.sql:/docker-entrypoint-initdb.d/insert.sql
+    expose:
+      - 3306
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - DB_URL=jdbc:mysql://database-mysql:3306/btl
+      - DB_USER=root
+      - DB_PASSWORD=luyen123
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+
+# docker compose -p spring-mvc up -d
+# docker ps
+# restart lai backend neu co loi
+# docker restart CONTAINER ID (Database ->backend ->frontend)

@@ -1,13 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Web</title>
 </head>
 <body>
-<h1>Web</h1>
-
+	<h1>Home Web</h1>
+	<p>Trạng thái Login: ${checkLogin}</p>
+	<div>
+		<a href="admin">Đến trang admin</a>
+	</div>
+	<div>
+		<a href="api/user">All api user</a>
+	</div>
+	<div>
+		<a href="login">Logout</a>
+	</div>
 </body>
 </html>

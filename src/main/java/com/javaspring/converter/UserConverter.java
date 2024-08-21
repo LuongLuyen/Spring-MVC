@@ -9,10 +9,13 @@ import com.javaspring.entity.UserEntity;
 public class UserConverter {
 	public UserDTO toDto(UserEntity entity) {
 		UserDTO result = new UserDTO();
-		result.setId(entity.getId());
-		result.setUserName(entity.getFullName());
-		result.setPassword(entity.getPassword());
-		result.setFullName(entity.getFullName());
+		if (entity!= null) {
+			result.setId(entity.getId());
+			result.setUserName(entity.getFullName());
+			result.setPassword(entity.getPassword());
+			result.setFullName(entity.getFullName());
+			return result;
+		}
 		return result;
 	}
 	public UserEntity toEntity(UserDTO dto) {

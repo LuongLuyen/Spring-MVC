@@ -49,4 +49,10 @@ public class UserService implements IUserService {
 			userRepository.delete(id);
 		}
 	}
+	@Override
+	public UserDTO login(String userName ,String password) {
+		UserEntity  userEntity = new UserEntity();
+		userEntity = userRepository.findByUserNameAndPassword(userName, password);
+		return userConverter.toDto(userEntity);
+	}
 }
