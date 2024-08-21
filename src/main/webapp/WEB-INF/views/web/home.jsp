@@ -16,7 +16,9 @@
 		<a href="api/user">All api user</a>
 	</div>
 	<div>
-		<a href="login">Logout</a>
+		<form action='logout' method="post">
+			<input type="submit" value="Logout">
+		</form>
 	</div>
 </body>
 </html>

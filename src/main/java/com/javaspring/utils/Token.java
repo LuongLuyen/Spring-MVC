@@ -29,4 +29,15 @@ public class Token {
         	return false;
         }
 	}
+	public static Boolean isAdmin(HttpServletRequest request) {
+	    String token = (String) Session.getAttribute(request, "token");
+	    request.setAttribute("token", token);
+	    String role = String.valueOf(token.charAt(0));
+	   
+		if (role.equals("1")) {
+            return true;
+        }else {
+        	return false;
+        }
+	}
 }

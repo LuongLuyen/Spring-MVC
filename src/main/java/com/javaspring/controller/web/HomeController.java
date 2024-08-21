@@ -25,19 +25,32 @@ public class HomeController {
 		Boolean checkLogin = Token.isLoggedIn(request);
 		if (checkLogin) {
 			model.addAttribute("checkLogin", "Đã đăng nhập");
+			return "web/home";
 		} else {
-			return "redirect:/login";
+			return "error/notlogin";
 		}
-		return "web/home";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage( HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("web/login");
-	    Session.invalidateSession(request);
 		return mav;
 	}
-
+	@RequestMapping(value = "/notlogin", method = RequestMethod.GET)
+	public ModelAndView notLogin( HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("error/notlogin");
+		return mav;
+	}
+	@RequestMapping(value = "/role", method = RequestMethod.GET)
+	public ModelAndView role( HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("error/role");
+		return mav;
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout( HttpServletRequest request) {
+		Session.invalidateSession(request);
+		return "redirect:/login";
+	}
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password,
 			Model model, HttpServletRequest request) {
@@ -45,7 +58,7 @@ public class HomeController {
 			UserDTO userDB = new UserDTO();
 			userDB = userService.login(username,password);
 			if (userDB.getUserName().equals(username) && userDB.getPassword().equals(password)) {
-				String genericToken = username + Token.getToken() + password;
+				String genericToken = userDB.getId() + Token.getToken() + password;
 				// Model add views data
 				model.addAttribute("username", username);
 				model.addAttribute("password", password);
@@ -64,7 +77,7 @@ public class HomeController {
 				}
 				return "web/home";// home.jsp
 			} else {
-				return "redirect:/login";
+				return "web/login";
 			}
 		}catch (Exception e){
 			return "error/error";//error.jsp
